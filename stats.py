@@ -18,3 +18,9 @@ def count_characters(book):
         if char.isalpha():
             letter_counts[char] += 1
     return dict(letter_counts)
+
+def sort_by_count(book):
+    counts = count_characters(book)
+    sorted_counts = sorted(counts.items(), key=lambda item: item[1], reverse=True)
+    formatted_list = [f"{letter}: {count}" for letter, count in sorted_counts]
+    return formatted_list
