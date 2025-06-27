@@ -1,11 +1,15 @@
 from stats import count_words, sort_by_count
+import sys
 
 def main():
-    word_count = count_words("/mnt/d/bookbot/books/frankenstein.txt")
-    char_count = sort_by_count("/mnt/d/bookbot/books/frankenstein.txt")
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    word_count = count_words(sys.argv[1])
+    char_count = sort_by_count(sys.argv[1])
     counts_str = "\n".join(char_count)
     message = f"""============ BOOKBOT ============
-Analyzing book found at books/frankenstein.txt...
+Analyzing book found at {sys.argv[1]}...
 ----------- Word Count ----------
 Found {word_count} total words
 --------- Character Count -------
